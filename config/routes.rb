@@ -1,6 +1,11 @@
 Tasktrak::Application.routes.draw do
   
-  devise_for :users
+  get "authenticate/index"
+  devise_for :users do
+    get "users/sign_out" => 'devise/sessions#destroy'
+    post "users/authenticate" => "authenticate#index"
+  end
+  
   resources :tasks
 
   root :to => "pages#index"
