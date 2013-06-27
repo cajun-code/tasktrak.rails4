@@ -9,4 +9,5 @@ class User < ActiveRecord::Base
     user = User.find_for_authentication(:email => username)
     user.valid_password?(password) ? user : nil
   end
+  has_many :tasks
 end
